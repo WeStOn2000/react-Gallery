@@ -4,9 +4,7 @@ const PhotoList = () => {
 
     return (
         <ul>
-            {photos.map(photos => (
-                <Photo key={ } photo={ } />
-            ))}
+           
         </ul>
     );
 }
