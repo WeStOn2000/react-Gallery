@@ -1,8 +1,14 @@
 import React from "react";
 
-const PhototList = () => {
+const PhotoList = () => {
 
-    return(
-
+    return (
+        <ul>
+            {photos.map(photos => (
+                <Photo key={ } photo={ } />
+            ))}
+        </ul>
     );
 }
+
+export default PhotoList;

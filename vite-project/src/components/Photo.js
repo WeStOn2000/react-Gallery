@@ -3,13 +3,9 @@ import React from "react";
 const Photo = () => {
 
     return (
-       <>
-       <li>
-
-       </li>
-       <img/>
-       
-       </>
+        <li>
+            <img src={ } alt={ } />
+        </li>
     );
 }
 
