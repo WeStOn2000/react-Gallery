@@ -1,32 +1,47 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
-//API
+// API key
 import apiKey from './config';
-//Components
+// Components
 import Nav from './components/Nav';
 import Search from './components/Search';
 import PhotoList from './components/PhotoList';
 
-function fetchData () {
- const[images, SetImages] = useState()
- useEffect(() => {
-  fetch("https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d653b043c3a66ddc4bf96656f192f529&tags=sunsets&per_page=24&format=json&nojsoncallback=1")
- },[])
-}
-
 function App() {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = (query) => {
+    const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`;
+
+    setLoading(true); // Set loading to true before the fetch request
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        setImages(data.photos.photo);
+        setLoading(false); // Set loading to false after the data is fetched
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false); // Set loading to false in case of an error
+      });
+  };
+
+  useEffect(() => {
+    // Fetch default data for "cats" when the app loads
+    fetchData('cats');
+  }, []);
+
   return (
     <div className="App">
-      <Search />
+      <Search onSearch={fetchData} />
       <Nav />
       <Routes>
         <Route path="/" element={<Navigate to="/cats" />} />
-        <Route path="/cats" element={<PhotoList />} />
-        <Route path="/dogs" element={<PhotoList />} />
-        <Route path="/computers" element={<PhotoList />} />
-        <Route path="/search/:query" element={<PhotoList />} />
+        <Route path="/cats" element={<PhotoList images={images} loading={loading} />} />
+        <Route path="/dogs" element={<PhotoList images={images} loading={loading} />} />
+        <Route path="/computers" element={<PhotoList images={images} loading={loading} />} />
+        <Route path="/search/:query" element={<PhotoList images={images} loading={loading} />} />
       </Routes>
     </div>
   );
