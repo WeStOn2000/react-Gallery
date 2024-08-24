@@ -1,7 +1,7 @@
 import React from "react";
 import Photo from "./Photo";
 
-function PhotoList({ photos, title }) {
+const PhotoList = ({ photos, title }) => {
     return (
       <div>
         <h2>{title}</h2>
