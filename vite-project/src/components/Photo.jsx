@@ -1,10 +1,10 @@
 import React from "react";
 
-function Photo = () => {
+const Photo = () => {
 
     return (
         <li>
-            <img src={ } alt={ } />
+            <img />
         </li>
     );
 }
