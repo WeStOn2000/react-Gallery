@@ -31,8 +31,9 @@ function App() {
 
   useEffect(() => {
     // Fetch default data for "cats" when the app loads
-    fetchData('cats');
+    fetchData("cars");
   }, []);
+
 
   return (
     <div className="App">
@@ -40,10 +41,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Navigate to="/cats" />} />
-        <Route path="/cats" element={<PhotoList photos={images} title="Cats" />} />
-        <Route path="/dogs" element={<PhotoList photos={images} title="Dogs" />} />
-        <Route path="/birds" element={<PhotoList photos={images} title="Birds" />} />
-        <Route path="/search/:query" element={<PhotoList photos={images} title="Search Results" />} />
+        <Route path="/cats" element={<PhotoList  photos={images} title="Cats" />} />
+        <Route path="/dogs" element={<PhotoList   photos={images} title="Dogs" />} />
+        <Route path="/birds" element={<PhotoList   photos={images} title="Birds" />} />
+        <Route path="/search/:query" element={<PhotoList  photos={images} title="Search Results" />} />
       </Routes>
     </div>
   );
