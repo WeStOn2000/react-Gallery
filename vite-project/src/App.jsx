@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import "./index.css";
 // API key
 import apiKey from './config';
 // Components
 import Nav from './components/Nav';
 import Search from './components/Search';
 import PhotoList from './components/PhotoList';
+
 
 function App() {
   const [images, setImages] = useState([]);
@@ -39,10 +41,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Navigate to="/cats" />} />
-        <Route path="/cats" element={<PhotoList images={images} loading={loading} />} />
-        <Route path="/dogs" element={<PhotoList images={images} loading={loading} />} />
-        <Route path="/computers" element={<PhotoList images={images} loading={loading} />} />
-        <Route path="/search/:query" element={<PhotoList images={images} loading={loading} />} />
+        <Route path="/cats" element={<PhotoList photos={images} title="Cats" />} />
+        <Route path="/dogs" element={<PhotoList photos={images} title="Dogs" />} />
+        <Route path="/birds" element={<PhotoList photos={images} title="Birds" />} />
+        <Route path="/search/:query" element={<PhotoList photos={images} title="Search Results" />} />
       </Routes>
     </div>
   );

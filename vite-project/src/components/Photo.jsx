@@ -1,11 +1,9 @@
 import React from "react";
 
-const Photo = () => {
-
+const Photo = ({ photo }) => {
+    const imgSrc = `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_w.jpg`;
     return (
-        <li>
-            <img />
-        </li>
+            <img src={imgSrc} alt={photo.title}/>
     );
 }
 

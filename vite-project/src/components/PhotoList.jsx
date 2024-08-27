@@ -1,17 +1,14 @@
 import React from "react";
 import Photo from "./Photo";
 
-const PhotoList = ({ images, loading }) => {
-    if (loading) {
-        return <p>Loading...</p>;
-    }
+const PhotoList = ({ photos, title }) => {
 
     return (
         <div>
-            <h2>Photo Gallery</h2>
+            <h2>{title}</h2>
             <div className="photo-container">
                 <ul>
-                    {images.map((photo) => (
+                    {photos.map((photo) => (
                         <li key={photo.id}>
                             <Photo photo={photo} />
                         </li>
