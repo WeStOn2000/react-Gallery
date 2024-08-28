@@ -30,13 +30,7 @@ function App() {
         setLoading(false); // Set loading to false in case of an error
       });
   };
- // Fetch new data when the search query in the URL changes
-  useEffect(() => {
-  const searchQuery = location.pathname.split('/search/')[1];
-  if(searchQuery){
-    fetchData(searchQuery);
-  }
-  },[location]);
+
  
 
 
