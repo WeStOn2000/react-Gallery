@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import photo from "./Photo";
 
 function PhotoList({ fetchData, query, photos, title }) {
   // useParams hook to get the query parameter from the url
