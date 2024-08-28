@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect , useRef} from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from "prop-types";
 
@@ -6,11 +6,15 @@ function PhotoList({ fetchData, query, photos, title }) {
   // useParams hook to get the query parameter from the URL
   const params = useParams();
   const currentQuery = query || params.query; // Determine the current query (prop or URL param)
-
+  const fetchDataRef = useRef(fetchData);
   // useEffect to fetch new data whenever the query changes
   useEffect(() => {
+    fetchDataRef.current = fetchData;
+  }, [fetchData]);
+  
+  useEffect(() => {
     if (currentQuery) {
-      fetchData(currentQuery); // Fetch data based on the current query
+      fetchDataRef.current(currentQuery); // Fetch data based on the current query
     }
   }, [currentQuery]); // Removed fetchData from the dependency array
 
