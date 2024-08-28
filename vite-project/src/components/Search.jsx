@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from "prop-types";
 
-function Search({ onSearch }) {
+function Search({onSearch}) {
   // Local state to manage the search query input
   const [searchText, setSearchText] = useState('');
   const navigate = useNavigate(); // useNavigate hook for programmatic navigation
@@ -33,6 +34,10 @@ function Search({ onSearch }) {
     </form>
   );
 }
+
+Search.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};
 
 export default Search;
 

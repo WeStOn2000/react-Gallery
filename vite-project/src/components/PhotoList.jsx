@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from "prop-types";
 
 function PhotoList({ fetchData, query, photos, title }) {
   // useParams hook to get the query parameter from the URL
@@ -25,11 +26,24 @@ function PhotoList({ fetchData, query, photos, title }) {
           ))}
         </ul>
       ) : (
-        <p>Loading...</p>
+        <p>No matches found</p> // Display this when there are no matches
       )}
     </div>
   );
 }
+PhotoList.propTypes = {
+  fetchData: PropTypes.func.isRequired,
+  query: PropTypes.string,
+  photos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      server: PropTypes.string.isRequired,
+      secret: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default PhotoList;
 

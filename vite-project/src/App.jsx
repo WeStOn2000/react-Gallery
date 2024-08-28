@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
+import { Routes, Route, Navigate, } from 'react-router-dom';
 import "./index.css";//Importing the css file for styling
 // API key
 import apiKey from './config';//Importing the flickr API from config.js
@@ -13,7 +13,6 @@ function App() {
   //State to store fetched images and loading status
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
 // Function to fetch data from flickr ApI based on query
   const fetchData = (query) => {
     const url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`;
