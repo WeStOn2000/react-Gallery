@@ -1,7 +1,8 @@
 body {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  color: #3f4850;
+  color: #323d49;
+  background-color: #9e7465;
 }
 
 h2 {
@@ -55,7 +56,7 @@ input {
   background: #438bbd;
   border-radius: 3px;
   padding: 5px;
-  color: #fff;
+  color: #fcf8f8;
 }
 
 .main-nav .active,
